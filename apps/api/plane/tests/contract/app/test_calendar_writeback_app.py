@@ -14,6 +14,7 @@ from unittest.mock import MagicMock
 
 import pytest
 from cryptography.fernet import Fernet
+from django.utils import timezone as django_timezone
 
 from plane.db.models import Issue, IssueType, Project
 from plane.ext.capacity.calendar_sync import (
@@ -321,7 +322,10 @@ def test_only_rows_that_owe_work_are_claimed(writeback, workspace, create_user):
     reconcile_session(session, actor=create_user)
     row = WorkshopSessionCalendarEvent.objects.get()
 
-    assert len(claim_rows(NOW)) == 1
+    # The row is stamped with the wall clock when it is reconciled. Claiming at
+    # the frozen NOW (2026-10-15) skips it once that instant is in the past.
+    claimed_at = django_timezone.now()
+    assert len(claim_rows(claimed_at)) == 1
 
     row.refresh_from_db()
     row.synced_revision = row.revision
@@ -329,7 +333,7 @@ def test_only_rows_that_owe_work_are_claimed(writeback, workspace, create_user):
     row.lease_expires_at = None
     row.save()
 
-    assert claim_rows(NOW) == []
+    assert claim_rows(claimed_at) == []
 
 
 @pytest.mark.contract
