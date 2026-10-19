@@ -7,7 +7,7 @@
 import React, { useMemo } from "react";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
-import { CalendarClock, CalendarPlus, CalendarSearch, ChartColumn, Ellipsis, Users } from "lucide-react";
+import { Building2, CalendarClock, CalendarPlus, CalendarSearch, ChartColumn, Ellipsis, Users } from "lucide-react";
 import { Disclosure, Transition } from "@headlessui/react";
 // plane imports
 import {
@@ -30,6 +30,7 @@ import {
   usePersonalNavigationPreferences,
   useWorkspaceNavigationPreferences,
 } from "@/hooks/use-navigation-preferences";
+import { useCustomerFeatures } from "@/plane-web/hooks/use-customer-features";
 import { SidebarItemBase } from "./sidebar-item";
 import { SidebarWorkspaceMenuItem } from "./workspace-menu-item";
 
@@ -37,6 +38,7 @@ export const SidebarMenuItems = observer(function SidebarMenuItems() {
   // routers
   const { workspaceSlug } = useParams();
   const { config } = useInstance();
+  const { isCustomersEnabled } = useCustomerFeatures(workspaceSlug?.toString());
   const { setValue: toggleWorkspaceMenu, storedValue: isWorkspaceMenuOpen } = useLocalStorage<boolean>(
     "is_workspace_menu_open",
     true
@@ -207,6 +209,18 @@ export const SidebarMenuItems = observer(function SidebarMenuItems() {
                 // oxlint-disable-next-line react/no-array-index-key
                 <SidebarItemBase key={`dynamic_${_index}`} item={item} />
               ))}
+              {isCustomersEnabled && (
+                <SidebarWorkspaceMenuItem
+                  item={{
+                    key: "customers",
+                    label: "Customers",
+                    labelTranslationKey: "customers",
+                    href: `/${workspaceSlug}/customers/`,
+                    access: [EUserWorkspaceRoles.ADMIN, EUserWorkspaceRoles.MEMBER],
+                    Icon: Building2,
+                  }}
+                />
+              )}
               {config?.is_google_calendar_capacity_enabled === true &&
                 capacityNavigationItems.map((item) => <SidebarWorkspaceMenuItem key={item.key} item={item} />)}
               <SidebarNavItem>

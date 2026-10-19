@@ -31,6 +31,9 @@ vi.mock("@plane/utils", () => ({ cn: () => "" }));
 vi.mock("@/hooks/store/use-instance", () => ({
   useInstance: () => ({ config: { is_google_calendar_capacity_enabled: state.enabled } }),
 }));
+vi.mock("@/plane-web/hooks/use-customer-features", () => ({
+  useCustomerFeatures: () => ({ isCustomersEnabled: false }),
+}));
 vi.mock("@/hooks/store/use-app-theme", () => ({ useAppTheme: () => ({}) }));
 vi.mock("@/hooks/store/user", () => ({
   useUserPermissions: () => ({ allowPermissions: (roles: number[]) => roles.includes(state.role) }),

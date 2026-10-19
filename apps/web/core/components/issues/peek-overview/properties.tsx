@@ -39,6 +39,7 @@ import { useUserPermissions } from "@/hooks/store/user";
 // plane web components
 import { WorkItemAdditionalSidebarProperties } from "@/plane-web/components/issues/issue-details/additional-properties";
 import { IssueWorklogProperty } from "@/plane-web/components/issues/worklog/property/root";
+import { IssueCustomersProperty } from "@/plane-web/components/issues/customers/property/root";
 import { canViewWorklogsForRole } from "@/plane-web/helpers/worklog";
 import { IssueParentSelectRoot } from "@/components/issues/parent-select-root";
 import type { TIssueOperations } from "../issue-detail";
@@ -256,6 +257,12 @@ export const PeekOverviewProperties = observer(function PeekOverviewProperties(p
           issueId={issueId}
           disabled={disabled}
           canViewWorklogs={canViewWorklogs}
+        />
+        <IssueCustomersProperty
+          workspaceSlug={workspaceSlug}
+          projectId={projectId}
+          issueId={issueId}
+          disabled={disabled}
         />
 
         <WorkItemAdditionalSidebarProperties

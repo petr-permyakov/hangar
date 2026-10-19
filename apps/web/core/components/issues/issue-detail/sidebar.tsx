@@ -39,6 +39,7 @@ import { useProjectState } from "@/hooks/store/use-project-state";
 // components
 import { WorkItemAdditionalSidebarProperties } from "@/plane-web/components/issues/issue-details/additional-properties";
 import { IssueWorklogProperty } from "@/plane-web/components/issues/worklog/property/root";
+import { IssueCustomersProperty } from "@/plane-web/components/issues/customers/property/root";
 import { canViewWorklogsForRole } from "@/plane-web/helpers/worklog";
 import { IssueParentSelectRoot } from "@/components/issues/parent-select-root";
 import { SidebarPropertyListItem } from "@/components/common/layout/sidebar/property-list-item";
@@ -270,6 +271,12 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
               issueId={issueId}
               disabled={!isEditable}
               canViewWorklogs={canViewWorklogs}
+            />
+            <IssueCustomersProperty
+              workspaceSlug={workspaceSlug}
+              projectId={projectId}
+              issueId={issueId}
+              disabled={!isEditable}
             />
 
             <WorkItemAdditionalSidebarProperties

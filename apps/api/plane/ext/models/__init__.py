@@ -37,6 +37,7 @@ from .workshop_template import (
 from .webauthn import InstanceAdminWebAuthnChallenge, InstanceAdminWebAuthnCredential
 from plane.ext.runner.models import RunnerAuditEvent, RunnerInstallation
 from .worklog import IssueWorkLog
+from .customer import Customer, CustomerRequest, CustomerWorkItemLink, WorkspaceFeature
 from .capacity import (
     CapacityAuditEvent,
     GoogleCalendarCredential,
@@ -97,6 +98,10 @@ __all__ = [
     "WorkshopSchedule",
     "WorkshopSession",
     "WorkshopSessionCalendarEvent",
+    "WorkspaceFeature",
+    "Customer",
+    "CustomerRequest",
+    "CustomerWorkItemLink",
 ]
 
 from .capacity import GoogleTrainingRule, GoogleTrainingEventLink

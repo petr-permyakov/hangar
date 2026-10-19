@@ -84,6 +84,9 @@
       "workshop_templates": {
         "title": "Listy kontrolne warsztatów"
       },
+      "customers": {
+        "title": "Klienci"
+      },
       "exports": {
         "heading": "Eksporty",
         "description": "Eksportuj dane projektu w różnych formatach i uzyskaj dostęp do historii eksportów z linkami do pobrania.",

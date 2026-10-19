@@ -84,6 +84,9 @@
       "workshop_templates": {
         "title": "ワークショップのチェックリスト"
       },
+      "customers": {
+        "title": "顧客"
+      },
       "exports": {
         "heading": "エクスポート",
         "description": "プロジェクトデータをさまざまな形式でエクスポートし、ダウンロードリンク付きのエクスポート履歴にアクセスできます。",

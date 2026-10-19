@@ -62,6 +62,15 @@ export const coreRoutes: RouteConfigEntry[] = [
         // Workspace Home
         route(":workspaceSlug", "./(all)/[workspaceSlug]/(projects)/page.tsx"),
 
+        // Customers
+        layout("./(all)/[workspaceSlug]/(projects)/customers/layout.tsx", [
+          route(":workspaceSlug/customers", "./(all)/[workspaceSlug]/(projects)/customers/page.tsx"),
+          route(
+            ":workspaceSlug/customers/:customerId",
+            "./(all)/[workspaceSlug]/(projects)/customers/[customerId]/page.tsx"
+          ),
+        ]),
+
         // Trainer capacity
         layout("./(all)/[workspaceSlug]/(projects)/capacity/layout.tsx", [
           route(":workspaceSlug/capacity", "./(all)/[workspaceSlug]/(projects)/capacity/page.tsx"),

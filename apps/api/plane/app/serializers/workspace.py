@@ -44,6 +44,14 @@ class WorkSpaceSerializer(DynamicBaseSerializer):
     total_members = serializers.IntegerField(read_only=True)
     logo_url = serializers.CharField(read_only=True)
     role = serializers.IntegerField(read_only=True)
+    # Fork (see FORK.md)
+    is_customers_enabled = serializers.SerializerMethodField()
+
+    def get_is_customers_enabled(self, obj):
+        from plane.ext.models.customer import WorkspaceFeature
+
+        feature = WorkspaceFeature.objects.filter(workspace_id=obj.id).first()
+        return bool(feature and feature.is_customers_enabled)
 
     def validate_name(self, value):
         # Check if the name contains a URL

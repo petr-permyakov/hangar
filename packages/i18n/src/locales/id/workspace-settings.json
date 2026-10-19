@@ -84,6 +84,9 @@
       "workshop_templates": {
         "title": "Daftar periksa workshop"
       },
+      "customers": {
+        "title": "Pelanggan"
+      },
       "exports": {
         "heading": "Ekspor",
         "description": "Ekspor data proyek Anda dalam berbagai format dan akses riwayat ekspor Anda dengan tautan unduhan.",

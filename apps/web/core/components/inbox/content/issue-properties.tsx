@@ -25,6 +25,7 @@ import { PriorityDropdown } from "@/components/dropdowns/priority";
 import { StateDropdown } from "@/components/dropdowns/state/dropdown";
 import type { TIssueOperations } from "@/components/issues/issue-detail";
 import { IssueLabel } from "@/components/issues/issue-detail/label";
+import { IssueCustomersProperty } from "@/plane-web/components/issues/customers/property/root";
 // hooks
 import { useProject } from "@/hooks/store/use-project";
 import { useAppRouter } from "@/hooks/use-app-router";
@@ -183,6 +184,15 @@ export const InboxIssueContentProperties = observer(function InboxIssueContentPr
                 )}
               </div>
             </div>
+
+            {issue?.id ? (
+              <IssueCustomersProperty
+                workspaceSlug={workspaceSlug}
+                projectId={projectId}
+                issueId={issue.id}
+                disabled={!isEditable}
+              />
+            ) : null}
 
             {/* duplicate to*/}
             {duplicateIssueDetails && (

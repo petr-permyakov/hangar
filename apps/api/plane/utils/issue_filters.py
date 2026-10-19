@@ -159,6 +159,25 @@ def filter_labels(params, issue_filter, method, prefix=""):
     return issue_filter
 
 
+# Fork (see FORK.md): work items linked to a customer, directly or via a request.
+def filter_customer(params, issue_filter, method, prefix=""):
+    from plane.ext.models.customer import CustomerWorkItemLink
+
+    if method == "GET":
+        customers = [item for item in str(params.get("customer", "")).split(",") if item not in ("", "null")]
+        customers = filter_valid_uuids(customers)
+        if not customers:
+            return issue_filter
+        issue_filter[f"{prefix}id__in"] = CustomerWorkItemLink.objects.filter(
+            customer_id__in=customers
+        ).values("issue_id")
+    elif params.get("customer") and params.get("customer") != "null":
+        issue_filter[f"{prefix}id__in"] = CustomerWorkItemLink.objects.filter(
+            customer_id=params.get("customer")
+        ).values("issue_id")
+    return issue_filter
+
+
 # Fork (see FORK.md): filter by custom work item type (Issue.type FK).
 def filter_issue_type_id(params, issue_filter, method, prefix=""):
     if method == "GET":
@@ -492,6 +511,7 @@ def issue_filters(query_params, method, prefix=""):
         "sub_issue": filter_sub_issue_toggle,
         # Fork (see FORK.md)
         "epic": filter_epic,
+        "customer": filter_customer,
         "subscriber": filter_subscribed_issues,
         "start_target_date": filter_start_target_date_issues,
     }

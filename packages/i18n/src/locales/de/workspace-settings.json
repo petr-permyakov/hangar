@@ -84,6 +84,9 @@
       "workshop_templates": {
         "title": "Workshop-Checklisten"
       },
+      "customers": {
+        "title": "Kunden"
+      },
       "exports": {
         "heading": "Exporte",
         "description": "Exportieren Sie Ihre Projektdaten in verschiedenen Formaten und greifen Sie auf Ihre Exporthistorie mit Download-Links zu.",

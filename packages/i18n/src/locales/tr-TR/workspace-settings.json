@@ -84,6 +84,9 @@
       "workshop_templates": {
         "title": "Atölye kontrol listeleri"
       },
+      "customers": {
+        "title": "Müşteriler"
+      },
       "exports": {
         "heading": "Dışa Aktarımlar",
         "description": "Proje verilerinizi çeşitli formatlarda dışa aktarın ve indirme bağlantılarıyla dışa aktarma geçmişinize erişin.",

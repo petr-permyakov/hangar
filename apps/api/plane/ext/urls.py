@@ -77,6 +77,16 @@ from plane.ext.views.capacity import (
 from plane.ext.views.capacity_import import TrainingImportEndpoint
 from plane.ext.views.capacity_report import TrainingReportEndpoint
 from plane.ext.views.capacity_training import GoogleTrainingRulesEndpoint, GoogleTrainingLinkEndpoint
+from plane.ext.views.customer import (
+    CustomerDetailEndpoint,
+    CustomerFeatureEndpoint,
+    CustomerListCreateEndpoint,
+    CustomerRequestDetailEndpoint,
+    CustomerRequestListCreateEndpoint,
+    CustomerUpsertEndpoint,
+    CustomerWorkItemsEndpoint,
+    IssueCustomersEndpoint,
+)
 from plane.ext.views.workshop_template import (
     WorkshopApplyChecklistEndpoint,
     WorkshopChecklistTemplateDetailEndpoint,
@@ -90,6 +100,46 @@ PROJECT_BASE = "workspaces/<str:slug>/projects/<uuid:project_id>"
 EPIC_BASE = "workspaces/<str:slug>/projects/<uuid:project_id>/epics"
 
 urlpatterns = [
+    path(
+        "workspaces/<str:slug>/customer-features/",
+        CustomerFeatureEndpoint.as_view(),
+        name="customer-features",
+    ),
+    path(
+        "workspaces/<str:slug>/customers/upsert/",
+        CustomerUpsertEndpoint.as_view(),
+        name="customers-upsert",
+    ),
+    path(
+        "workspaces/<str:slug>/customers/",
+        CustomerListCreateEndpoint.as_view(),
+        name="customers",
+    ),
+    path(
+        "workspaces/<str:slug>/customers/<uuid:pk>/",
+        CustomerDetailEndpoint.as_view(),
+        name="customer-detail",
+    ),
+    path(
+        "workspaces/<str:slug>/customers/<uuid:customer_id>/requests/",
+        CustomerRequestListCreateEndpoint.as_view(),
+        name="customer-requests",
+    ),
+    path(
+        "workspaces/<str:slug>/customers/<uuid:customer_id>/requests/<uuid:pk>/",
+        CustomerRequestDetailEndpoint.as_view(),
+        name="customer-request-detail",
+    ),
+    path(
+        "workspaces/<str:slug>/customers/<uuid:pk>/work-items/",
+        CustomerWorkItemsEndpoint.as_view(),
+        name="customer-work-items",
+    ),
+    path(
+        f"{PROJECT_BASE}/issues/<uuid:issue_id>/customers/",
+        IssueCustomersEndpoint.as_view(),
+        name="issue-customers",
+    ),
     path(
         "workspaces/<str:slug>/capacity/training-imports/",
         TrainingImportEndpoint.as_view(),

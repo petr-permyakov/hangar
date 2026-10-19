@@ -78,6 +78,14 @@ export const WORKSPACE_SETTINGS: Record<TWorkspaceSettingsTabs, TWorkspaceSettin
     access: [EUserWorkspaceRoles.ADMIN],
     highlight: (pathname: string, baseUrl: string) => pathname === `${baseUrl}/settings/workshop-templates/`,
   },
+  // Fork (see FORK.md)
+  customers: {
+    key: "customers",
+    i18n_label: "workspace_settings.settings.customers.title",
+    href: `/settings/customers`,
+    access: [EUserWorkspaceRoles.ADMIN],
+    highlight: (pathname: string, baseUrl: string) => pathname === `${baseUrl}/settings/customers/`,
+  },
   webhooks: {
     key: "webhooks",
     i18n_label: "workspace_settings.settings.webhooks.title",
@@ -103,6 +111,7 @@ export const GROUPED_WORKSPACE_SETTINGS: Record<WORKSPACE_SETTINGS_CATEGORY, TWo
   [WORKSPACE_SETTINGS_CATEGORY.FEATURES]: [
     WORKSPACE_SETTINGS["home-defaults"],
     WORKSPACE_SETTINGS["workshop-templates"],
+    WORKSPACE_SETTINGS["customers"],
   ],
   [WORKSPACE_SETTINGS_CATEGORY.DEVELOPER]: [WORKSPACE_SETTINGS["webhooks"]],
 };

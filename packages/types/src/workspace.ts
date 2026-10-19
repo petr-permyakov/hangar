@@ -34,6 +34,8 @@ export interface IWorkspace {
   total_projects?: number;
   role: number;
   timezone: string;
+  // Fork (see FORK.md)
+  is_customers_enabled?: boolean;
 }
 
 export interface IWorkspaceLite {

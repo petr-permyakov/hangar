@@ -53,6 +53,7 @@ Hangar is not affiliated with, endorsed by, or supported by Plane Software, Inc.
 | Work-item hierarchy grouping and identifiers     | Available on `preview`              | [Feature guide](docs/epics-as-work-items.md)          |
 | Markdown in descriptions and comments            | Available on `preview`              | [Feature guide](docs/markdown-in-descriptions.md)     |
 | Capacity planning and workshops                  | Available on `preview`; opt-in      | [Feature guide](docs/capacity-planner.md)             |
+| Customers and customer requests                  | Available on `feat/customers`; opt-in | [Feature guide](docs/customers.md)                  |
 | Rich-text sanitizing and Content-Security-Policy | Available on `preview`              | [Security guide](docs/content-security-policy.md)     |
 
 “In review” means the code is not yet part of the supported `preview` branch. Do not
@@ -69,6 +70,8 @@ the table marks them as available.
 
 ## Feature and security documentation
 
+- [Customers and customer requests](docs/customers.md) — enable customer
+  records, capture requests, and link them to work items and intake items.
 - [Epics as work items](docs/epics-as-work-items.md) — enable the canonical Task
   and Epic types, create and filter Epics in Work Items, understand hierarchy
   invariants, and migrate from the former dedicated Epic surface.

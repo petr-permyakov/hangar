@@ -9,6 +9,7 @@ import {
   ArrowDownToLine,
   ArrowUpToLine,
   Building,
+  Building2,
   HeartHandshake,
   LayoutDashboard,
   ListChecks,
@@ -29,4 +30,5 @@ export const WORKSPACE_SETTINGS_ICONS: Record<TWorkspaceSettingsTabs, LucideIcon
   // Fork (see FORK.md)
   "home-defaults": LayoutDashboard,
   "workshop-templates": ListChecks,
+  customers: Building2,
 };

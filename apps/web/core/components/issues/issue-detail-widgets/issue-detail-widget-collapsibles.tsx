@@ -17,6 +17,7 @@ import { LinksCollapsible } from "./links";
 import { RelationsCollapsible } from "./relations";
 import { SubIssuesCollapsible } from "./sub-issues";
 import { WorkshopSessionsCollapsible } from "./workshop-sessions";
+import { CustomerRequestsCollapsible } from "./customer-requests/root";
 
 type Props = {
   workspaceSlug: string;
@@ -92,6 +93,7 @@ export const IssueDetailWidgetCollapsibles = observer(function IssueDetailWidget
         assigneeIds={issue?.assignee_ids ?? []}
         disabled={disabled}
       />
+      <CustomerRequestsCollapsible workspaceSlug={workspaceSlug} projectId={projectId} issueId={issueId} />
       {shouldRenderAttachments && (
         <AttachmentsCollapsible
           workspaceSlug={workspaceSlug}

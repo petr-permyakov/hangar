@@ -84,6 +84,9 @@
       "workshop_templates": {
         "title": "Listas de comprobación de talleres"
       },
+      "customers": {
+        "title": "Clientes"
+      },
       "exports": {
         "heading": "Exportaciones",
         "description": "Exporta los datos de tu proyecto en varios formatos y accede a tu historial de exportaciones con enlaces de descarga.",

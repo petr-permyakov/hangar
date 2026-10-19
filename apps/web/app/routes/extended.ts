@@ -41,6 +41,10 @@ export const extendedRoutes: RouteConfigEntry[] = [
             ":workspaceSlug/settings/workshop-templates",
             "./(all)/[workspaceSlug]/(settings)/settings/(workspace)/workshop-templates/page.tsx"
           ),
+          route(
+            ":workspaceSlug/settings/customers",
+            "./(all)/[workspaceSlug]/(settings)/settings/(workspace)/customers/page.tsx"
+          ),
         ]),
         layout("./(all)/[workspaceSlug]/(settings)/settings/projects/layout.tsx", [
           layout("./(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/layout.tsx", [
