@@ -18,6 +18,14 @@ export const extendedRoutes: RouteConfigEntry[] = [
         layout("./(all)/[workspaceSlug]/(projects)/browse/[workItem]/layout.tsx", [
           route("i/:workItem", "./(all)/short-work-item/page.tsx"),
         ]),
+        layout("./(all)/[workspaceSlug]/(projects)/wiki/layout.tsx", [
+          route(":workspaceSlug/wiki", "./(all)/[workspaceSlug]/(projects)/wiki/page.tsx"),
+          route(
+            ":workspaceSlug/wiki/collections/:collectionId",
+            "./(all)/[workspaceSlug]/(projects)/wiki/collections/[collectionId]/page.tsx"
+          ),
+          route(":workspaceSlug/wiki/:pageId", "./(all)/[workspaceSlug]/(projects)/wiki/[pageId]/page.tsx"),
+        ]),
       ]),
     ]),
     layout("./(all)/[workspaceSlug]/layout.tsx", [
@@ -40,6 +48,10 @@ export const extendedRoutes: RouteConfigEntry[] = [
           route(
             ":workspaceSlug/settings/workshop-templates",
             "./(all)/[workspaceSlug]/(settings)/settings/(workspace)/workshop-templates/page.tsx"
+          ),
+          route(
+            ":workspaceSlug/settings/wiki",
+            "./(all)/[workspaceSlug]/(settings)/settings/(workspace)/wiki/page.tsx"
           ),
         ]),
         layout("./(all)/[workspaceSlug]/(settings)/settings/projects/layout.tsx", [

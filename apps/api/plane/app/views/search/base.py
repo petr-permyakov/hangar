@@ -704,31 +704,9 @@ class SearchEndpoint(BaseAPIView):
                     response_data["module"] = list(modules)
 
                 elif query_type == "page":
-                    fields = ["name"]
-                    q = Q()
+                    # Fork (see FORK.md): project pages are not global, and wiki
+                    # pages have no project. The previous filter required both.
+                    from plane.ext.services.wiki import command_search_pages
 
-                    if query:
-                        for field in fields:
-                            q |= Q(**{f"{field}__icontains": query})
-
-                    pages = (
-                        Page.objects.filter(
-                            q,
-                            projects__project_projectmember__member=self.request.user,
-                            projects__project_projectmember__is_active=True,
-                            workspace__slug=slug,
-                            access=0,
-                            is_global=True,
-                        )
-                        .order_by("-created_at")
-                        .distinct()
-                        .values(
-                            "name",
-                            "id",
-                            "logo_props",
-                            "projects__id",
-                            "workspace__slug",
-                        )[:count]
-                    )
-                    response_data["page"] = list(pages)
+                    response_data["page"] = command_search_pages(self.request.user, slug, query, count)
             return Response(response_data, status=status.HTTP_200_OK)

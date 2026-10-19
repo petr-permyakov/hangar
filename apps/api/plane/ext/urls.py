@@ -77,6 +77,41 @@ from plane.ext.views.capacity import (
 from plane.ext.views.capacity_import import TrainingImportEndpoint
 from plane.ext.views.capacity_report import TrainingReportEndpoint
 from plane.ext.views.capacity_training import GoogleTrainingRulesEndpoint, GoogleTrainingLinkEndpoint
+from plane.ext.views.wiki import (
+    WikiAnalyticsEndpoint,
+    WikiCollectionDetailEndpoint,
+    WikiCollectionListCreateEndpoint,
+    WikiCollectionMemberDetailEndpoint,
+    WikiCollectionMemberEndpoint,
+    WikiCollectionPagesEndpoint,
+    WikiLabelDetailEndpoint,
+    WikiLabelEndpoint,
+    WikiLinkBlockDetailEndpoint,
+    WikiLinkBlockEndpoint,
+    WikiMemberEndpoint,
+    WikiPageArchiveEndpoint,
+    WikiPageCommentEndpoint,
+    WikiPageDetailEndpoint,
+    WikiPageFavoriteEndpoint,
+    WikiPageListCreateEndpoint,
+    WikiPageLockEndpoint,
+    WikiPageMoveEndpoint,
+    WikiPageShareDetailEndpoint,
+    WikiPageShareEndpoint,
+    WikiPublishEndpoint,
+    WikiPublishedPageEndpoint,
+    WikiSettingsEndpoint,
+    WikiSidebarEndpoint,
+    WikiTemplateEndpoint,
+    WikiV2ArchiveEndpoint,
+    WikiV2CollectionListCreateEndpoint,
+    WikiV2CollectionPagesEndpoint,
+    WikiV2PageDetailEndpoint,
+    WikiV2PageListCreateEndpoint,
+    WikiV2StickyDetailEndpoint,
+    WikiV2StickyEndpoint,
+    WikiV2UnarchiveEndpoint,
+)
 from plane.ext.views.workshop_template import (
     WorkshopApplyChecklistEndpoint,
     WorkshopChecklistTemplateDetailEndpoint,
@@ -411,4 +446,111 @@ urlpatterns = [
     # Deferred epic routes (upstream views inline the epic-excluding
     # issue_objects manager and need dedicated ext variants):
     # epics-detail/, epics/list/, issue-relation/, archive/.
+    path("workspaces/<str:slug>/wiki/settings/", WikiSettingsEndpoint.as_view(), name="wiki-settings"),
+    path("workspaces/<str:slug>/wiki/sidebar/", WikiSidebarEndpoint.as_view(), name="wiki-sidebar"),
+    path("workspaces/<str:slug>/wiki/members/", WikiMemberEndpoint.as_view(), name="wiki-members"),
+    path("workspaces/<str:slug>/wiki/pages/", WikiPageListCreateEndpoint.as_view(), name="wiki-pages"),
+    path("workspaces/<str:slug>/wiki/pages/<uuid:page_id>/", WikiPageDetailEndpoint.as_view(), name="wiki-page"),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/archive/",
+        WikiPageArchiveEndpoint.as_view(),
+        name="wiki-page-archive",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/lock/", WikiPageLockEndpoint.as_view(), name="wiki-page-lock"
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/favorite/",
+        WikiPageFavoriteEndpoint.as_view(),
+        name="wiki-page-favorite",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/move/", WikiPageMoveEndpoint.as_view(), name="wiki-page-move"
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/shares/",
+        WikiPageShareEndpoint.as_view(),
+        name="wiki-page-shares",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/shares/<uuid:member_id>/",
+        WikiPageShareDetailEndpoint.as_view(),
+        name="wiki-page-share",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/comments/",
+        WikiPageCommentEndpoint.as_view(),
+        name="wiki-page-comments",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/analytics/",
+        WikiAnalyticsEndpoint.as_view(),
+        name="wiki-page-analytics",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/publish/",
+        WikiPublishEndpoint.as_view(),
+        name="wiki-page-publish",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/link-blocks/",
+        WikiLinkBlockEndpoint.as_view(),
+        name="wiki-link-blocks",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/pages/<uuid:page_id>/link-blocks/<uuid:block_id>/",
+        WikiLinkBlockDetailEndpoint.as_view(),
+        name="wiki-link-block",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/collections/", WikiCollectionListCreateEndpoint.as_view(), name="wiki-collections"
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/collections/<uuid:collection_id>/",
+        WikiCollectionDetailEndpoint.as_view(),
+        name="wiki-collection",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/collections/<uuid:collection_id>/members/",
+        WikiCollectionMemberEndpoint.as_view(),
+        name="wiki-collection-members",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/collections/<uuid:collection_id>/members/<uuid:member_id>/",
+        WikiCollectionMemberDetailEndpoint.as_view(),
+        name="wiki-collection-member",
+    ),
+    path(
+        "workspaces/<str:slug>/wiki/collections/<uuid:collection_id>/pages/",
+        WikiCollectionPagesEndpoint.as_view(),
+        name="wiki-collection-pages",
+    ),
+    path("workspaces/<str:slug>/wiki/labels/", WikiLabelEndpoint.as_view(), name="wiki-labels"),
+    path("workspaces/<str:slug>/wiki/labels/<uuid:label_id>/", WikiLabelDetailEndpoint.as_view(), name="wiki-label"),
+    path("workspaces/<str:slug>/wiki/templates/", WikiTemplateEndpoint.as_view(), name="wiki-templates"),
+    path(
+        "workspaces/<str:slug>/wiki/published/<str:anchor>/",
+        WikiPublishedPageEndpoint.as_view(),
+        name="wiki-published",
+    ),
+    path("v2/workspaces/<str:slug>/pages/", WikiV2PageListCreateEndpoint.as_view(), name="v2-wiki-pages"),
+    path("v2/workspaces/<str:slug>/pages/<uuid:pk>/", WikiV2PageDetailEndpoint.as_view(), name="v2-wiki-page"),
+    path("v2/workspaces/<str:slug>/pages/<uuid:pk>/archive/", WikiV2ArchiveEndpoint.as_view(), name="v2-wiki-archive"),
+    path(
+        "v2/workspaces/<str:slug>/pages/<uuid:pk>/unarchive/",
+        WikiV2UnarchiveEndpoint.as_view(),
+        name="v2-wiki-unarchive",
+    ),
+    path(
+        "v2/workspaces/<str:slug>/collections/",
+        WikiV2CollectionListCreateEndpoint.as_view(),
+        name="v2-wiki-collections",
+    ),
+    path(
+        "v2/workspaces/<str:slug>/collections/<uuid:pk>/pages/",
+        WikiV2CollectionPagesEndpoint.as_view(),
+        name="v2-wiki-collection-pages",
+    ),
+    path("v2/workspaces/<str:slug>/stickies/", WikiV2StickyEndpoint.as_view(), name="v2-stickies"),
+    path("v2/workspaces/<str:slug>/stickies/<uuid:pk>/", WikiV2StickyDetailEndpoint.as_view(), name="v2-sticky"),
 ]

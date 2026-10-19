@@ -53,6 +53,7 @@ Hangar is not affiliated with, endorsed by, or supported by Plane Software, Inc.
 | Work-item hierarchy grouping and identifiers     | Available on `preview`              | [Feature guide](docs/epics-as-work-items.md)          |
 | Markdown in descriptions and comments            | Available on `preview`              | [Feature guide](docs/markdown-in-descriptions.md)     |
 | Capacity planning and workshops                  | Available on `preview`; opt-in      | [Feature guide](docs/capacity-planner.md)             |
+| Workspace wiki                                   | In review                           | [Feature guide](docs/wiki.md)                         |
 | Rich-text sanitizing and Content-Security-Policy | Available on `preview`              | [Security guide](docs/content-security-policy.md)     |
 
 “In review” means the code is not yet part of the supported `preview` branch. Do not
@@ -109,6 +110,8 @@ the table marks them as available.
   security key the instance-admin console requires, and recovery.
 - [Capacity planning and workshops](docs/capacity-planner.md) — planning,
   trainer search, bookings, and the instance flag that enables them.
+- [Workspace wiki](docs/wiki.md) — collections, nested pages, shares, labels,
+  publishing, and the personal notes the wiki home lists.
 - [Markdown in descriptions and comments](docs/markdown-in-descriptions.md) —
   what converts in the editor and through the API, and what does not.
 - [Instance branding](docs/instance-branding.md),

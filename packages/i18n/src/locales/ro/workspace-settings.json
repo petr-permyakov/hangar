@@ -84,6 +84,9 @@
       "workshop_templates": {
         "title": "Liste de verificare pentru workshopuri"
       },
+      "wiki": {
+        "title": "Wiki"
+      },
       "exports": {
         "heading": "Exporturi",
         "description": "Exportă datele proiectelor tale în diverse formate și accesează istoricul exporturilor cu link-uri de descărcare.",
