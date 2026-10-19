@@ -7,7 +7,7 @@
 import React, { useMemo } from "react";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
-import { CalendarClock, CalendarPlus, CalendarSearch, ChartColumn, Ellipsis, Users } from "lucide-react";
+import { BookOpen, CalendarClock, CalendarPlus, CalendarSearch, ChartColumn, Ellipsis, Users } from "lucide-react";
 import { Disclosure, Transition } from "@headlessui/react";
 // plane imports
 import {
@@ -207,6 +207,16 @@ export const SidebarMenuItems = observer(function SidebarMenuItems() {
                 // oxlint-disable-next-line react/no-array-index-key
                 <SidebarItemBase key={`dynamic_${_index}`} item={item} />
               ))}
+              <SidebarWorkspaceMenuItem
+                item={{
+                  key: "wiki",
+                  label: "Wiki",
+                  labelTranslationKey: "",
+                  href: `/${workspaceSlug}/wiki/`,
+                  access: [EUserWorkspaceRoles.ADMIN, EUserWorkspaceRoles.MEMBER],
+                  Icon: BookOpen,
+                }}
+              />
               {config?.is_google_calendar_capacity_enabled === true &&
                 capacityNavigationItems.map((item) => <SidebarWorkspaceMenuItem key={item.key} item={item} />)}
               <SidebarNavItem>

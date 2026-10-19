@@ -84,6 +84,9 @@
       "workshop_templates": {
         "title": "ワークショップのチェックリスト"
       },
+      "wiki": {
+        "title": "Wiki"
+      },
       "exports": {
         "heading": "エクスポート",
         "description": "プロジェクトデータをさまざまな形式でエクスポートし、ダウンロードリンク付きのエクスポート履歴にアクセスできます。",

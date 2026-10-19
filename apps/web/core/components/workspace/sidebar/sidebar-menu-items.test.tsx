@@ -88,6 +88,13 @@ describe("capacity links in the active workspace menu", () => {
   it.each([EUserWorkspaceRoles.GUEST])("hides capacity from workspace role %s", (role) => {
     state.enabled = true;
     state.role = role;
-    expect(renderToStaticMarkup(<SidebarMenuItems />)).not.toContain("/capacity/");
+    const html = renderToStaticMarkup(<SidebarMenuItems />);
+    expect(html).not.toContain("/capacity/");
+    expect(html).not.toContain("/wiki/");
+  });
+
+  it.each([EUserWorkspaceRoles.MEMBER, EUserWorkspaceRoles.ADMIN])("shows the wiki to workspace role %s", (role) => {
+    state.role = role;
+    expect(renderToStaticMarkup(<SidebarMenuItems />)).toContain('href="/test-workspace/wiki/"');
   });
 });

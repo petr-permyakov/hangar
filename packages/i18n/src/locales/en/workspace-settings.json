@@ -84,6 +84,9 @@
       "workshop_templates": {
         "title": "Workshop checklists"
       },
+      "wiki": {
+        "title": "Wiki"
+      },
       "exports": {
         "heading": "Exports",
         "description": "Export your project data in various formats and access your export history with download links.",

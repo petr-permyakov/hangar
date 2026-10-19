@@ -36,6 +36,19 @@ from .workshop_template import (
 )
 from .webauthn import InstanceAdminWebAuthnChallenge, InstanceAdminWebAuthnCredential
 from plane.ext.runner.models import RunnerAuditEvent, RunnerInstallation
+from .wiki import (
+    WikiCollection,
+    WikiCollectionMember,
+    WikiLabel,
+    WikiLinkBlock,
+    WikiPageComment,
+    WikiPageLabel,
+    WikiPageLink,
+    WikiPageShare,
+    WikiPageTemplate,
+    WikiPublication,
+    WikiSettings,
+)
 from .worklog import IssueWorkLog
 from .capacity import (
     CapacityAuditEvent,
@@ -67,6 +80,17 @@ __all__ = [
     "IssuePropertyOption",
     "IssuePropertyValue",
     "IssueWorkLog",
+    "WikiCollection",
+    "WikiCollectionMember",
+    "WikiLabel",
+    "WikiLinkBlock",
+    "WikiPageComment",
+    "WikiPageLabel",
+    "WikiPageLink",
+    "WikiPageShare",
+    "WikiPageTemplate",
+    "WikiPublication",
+    "WikiSettings",
     "FederatedLinkAudit",
     "FederatedLinkAuthorization",
     "InstanceMaintenanceNotice",
